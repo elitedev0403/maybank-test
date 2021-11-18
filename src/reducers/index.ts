@@ -1,22 +1,20 @@
 import { History } from "history";
 import { combineReducers } from "redux";
-import * as configReducer from './config';
-import * as notestoreReducer from './notestore';
-
-
-import * as snackbarReducer from './snackbarEvent';
+import * as configReducer from './configReducer';
+import * as snackbarReducer from './snackbarEventReducer';
+import * as addressReducer from './addressesReducer';
 import { SnackbarEvent } from "../model";
-import { NoteStore } from '../model';
+import { AddressStore } from "../model";
 
 export interface RootState {
 	drawerOpen: boolean;
-    snackbarEvents: SnackbarEvent[];	
-	notestore: 	NoteStore;
+	snackbarEvents: SnackbarEvent[];
+	addressStore: AddressStore;
 }
 
 export default (history: History) =>
 	combineReducers({
 		...configReducer,
 		...snackbarReducer,
-		...notestoreReducer,
+		...addressReducer,
 	});

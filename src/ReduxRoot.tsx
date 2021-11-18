@@ -1,4 +1,4 @@
-import { Typography, CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
 import * as React from "react";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";

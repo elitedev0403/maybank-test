@@ -1,35 +1,31 @@
 // prettier-ignore
-import { AppBar, IconButton, Toolbar, Typography, useMediaQuery } from "@material-ui/core";
-import { useTheme } from '@material-ui/core/styles';
+import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import { Theme } from '@material-ui/core/styles';
 import MenuIcon from "@material-ui/icons/Menu";
 import { makeStyles } from "@material-ui/styles";
 import * as React from "react";
+import { useSelector } from 'react-redux';
 import { Router } from "react-router-dom";
 import { RouterSwitch } from 'react-typesafe-routes';
-import { Drawer } from "./components/Drawer";
-import { history } from "./configureStore";
-import { withRoot } from "./withRoot";
-import { useSelector } from 'react-redux';
 import { useActions } from './actions';
-import * as ConfigActions from './actions/config';
+import * as ConfigActions from './actions/configAction';
+import { Drawer } from "./components/Drawer";
+import { Snackbar } from './components/Snackbar';
+import config from './config';
+import { history } from "./configureStore";
 import { RootState } from "./reducers";
 import { router } from "./Router";
-
-import { Snackbar } from './components/Snackbar';
+import { withMap } from "./withMap";
+import { withRoot } from "./withRoot";
 
 function App() {
 	const classes = useStyles();
 	const drawerOpen: boolean = useSelector((state: RootState) => state.drawerOpen);
 	const configActions: typeof ConfigActions = useActions(ConfigActions);
-	const isMobile = useMediaQuery((theme: Theme) =>
-		theme.breakpoints.down("sm")
-	);
 
 	const handleDrawerToggle = () => {
 		configActions.setDrawerOpen(!drawerOpen);
 	};
-
 
 	return (
 		<Router history={history}>
@@ -49,9 +45,8 @@ function App() {
 							<Typography
 								variant="h6"
 								color="inherit"
-								// noWrap={isMobile}
 							>
-								NoteBook App
+								{config.APP_NAME}
 							</Typography>
 						</Toolbar>
 					</AppBar>
@@ -100,4 +95,4 @@ const useStyles = makeStyles((theme: Theme) => ({
 	},
 }));
 
-export default withRoot(App);
+export default withMap(withRoot(App));

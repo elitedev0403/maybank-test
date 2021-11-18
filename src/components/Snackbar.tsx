@@ -4,11 +4,11 @@ import { Alert } from "@material-ui/lab";
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { useActions } from "../actions";
-import * as SnackbarEventActions from "../actions/snackbarEvent";
-import { SnackbarEvent } from "../model/snackbarEvent";
+import * as SnackbarEventActions from "../actions/snackbarEventAction";
+import { SnackbarEvent } from "../model/snackbarEventModel";
 import { RootState } from "../reducers";
 
-export function Snackbar() {
+export const Snackbar = () => {
 	const classes = useStyles();
 	const snackbarEvents: SnackbarEvent[] = useSelector(
 		(state: RootState) => state.snackbarEvents
@@ -21,7 +21,6 @@ export function Snackbar() {
 	);
 
 	React.useEffect(() => {
-		console.log('snackbar changed')
 		setCurrentEvent(
 			snackbarEvents.length > 0 ? snackbarEvents[0] : undefined
 		);
@@ -72,3 +71,6 @@ const useStyles = makeStyles({
 		zIndex: 99999999,
 	},
 });
+
+
+export default React.memo(Snackbar);

@@ -2,7 +2,7 @@ import {
 	SnackbarEvent,
 	SnackbarEventAction,
 	SnackbarEventActions,
-} from "../model/snackbarEvent";
+} from "../model/snackbarEventModel";
 
 export function addSnackbarEvent(event: SnackbarEvent): SnackbarEventAction {
 	return {

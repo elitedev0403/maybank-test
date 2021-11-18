@@ -1,5 +1,5 @@
-import { ConfigActions } from '../model/config';
-import { SnackbarEvent, SnackbarEventAction, SnackbarEventActions } from '../model/snackbarEvent';
+import { ConfigActions } from '../model/configModel';
+import { SnackbarEvent, SnackbarEventAction, SnackbarEventActions } from '../model/snackbarEventModel';
 import createReducer from './createReducer';
 
 export const snackbarEvents = createReducer<SnackbarEvent[]>([], {

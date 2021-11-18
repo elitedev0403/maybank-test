@@ -1,17 +1,14 @@
-import { SnackbarEventAction } from './snackbarEvent';
-import { ConfigAction } from './config';
+import { SnackbarEventAction } from './snackbarEventModel';
+import { ConfigAction } from './configModel';
 
-import { NotebookAction} from './notebook'
-import { NoteStoreAction } from './notestore'
+import { AddressAction } from './addressModel'
 
-export * from './config';
+export * from './configModel';
+export * from './addressModel';
 
-export * from './notestore';
-export * from './notebook';
-
-export * from './snackbarEvent';
+export * from './snackbarEventModel';
 
 export type Action =
     | ConfigAction
-    | SnackbarEventAction | NotebookAction | NoteStoreAction
-;
+    | SnackbarEventAction | AddressAction
+    ;
