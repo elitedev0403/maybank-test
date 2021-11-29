@@ -1,7 +1,5 @@
 ##Maybank Assessment
 
-Developed By Kejay Howard
-
 How to run:
 
 In the current folder, open the terminal and run these commands:
